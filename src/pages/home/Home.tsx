@@ -1,4 +1,13 @@
+import { useContext, useEffect } from 'react';
+import { AuthContext } from '../../contexts/AuthContext';
+
 function Home() {
+    useEffect(() => {
+        document.title = 'Blog Pessoal - Início';
+    }, []);
+
+    const { usuario } = useContext(AuthContext);
+
     return (
         <>
             <div id="container" className="flex justify-center bg-indigo-900">
@@ -15,7 +24,10 @@ function Home() {
                             className="flex flex-col items-center gap-5"
                         >
                             <h2 className="text-5xl font-bold">
-                                Boas vindas, blogger!
+                                Boas vindas,{' '}
+                                {usuario.nome.length > 0
+                                    ? usuario.nome
+                                    : 'blogger!'}
                             </h2>
                             <p className="text-xl">
                                 Expresse aqui os seus pensamentos e opiniões
