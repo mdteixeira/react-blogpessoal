@@ -1,115 +1,103 @@
-import { ChangeEvent, useContext, useEffect, useState } from 'react';
-import './Login.css';
-
 import { Link, useNavigate } from 'react-router-dom';
-
+import './Login.css';
 import { AuthContext } from '../../contexts/AuthContext';
+import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import UsuarioLogin from '../../models/UsuarioLogin';
 import { RotatingLines } from 'react-loader-spinner';
 
 function Login() {
-    useEffect(() => {
-        document.title = 'Blog Pessoal - Login';
-    }, []);
+  const navigate = useNavigate();
 
-    let navigate = useNavigate();
+  const { usuario, handleLogin, isLoading } = useContext(AuthContext);
 
-    const { usuario, handleLogin } = useContext(AuthContext);
+  const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>(
+    {} as UsuarioLogin
+  );
 
-    const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>(
-        {} as UsuarioLogin
-    );
-
-    const { isLoading } = useContext(AuthContext);
-
-    useEffect(() => {
-        if (usuario.token !== '') {
-            navigate('/home');
-        }
-    }, [usuario]);
-
-    function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
-        setUsuarioLogin({
-            ...usuarioLogin,
-            [e.target.name]: e.target.value,
-        });
+  useEffect(() => {
+    if (usuario.token !== '') {
+      navigate('/home');
     }
+  }, [usuario]);
 
-    function login(e: ChangeEvent<HTMLFormElement>) {
-        e.preventDefault();
-        handleLogin(usuarioLogin);
-        ('');
-    }
+  function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
+    setUsuarioLogin({
+      ...usuarioLogin,
+      [e.target.name]: e.target.value,
+    });
+  }
 
-    return (
-        <>
-            <div className="grid h-screen grid-cols-1 font-bold lg:grid-cols-2 place-items-center ">
-                <form
-                    className="flex flex-col items-center justify-center w-1/2 gap-4"
-                    onSubmit={login}
-                >
-                    <h2 className="text-5xl text-slate-900 ">Entrar</h2>
-                    <div className="flex flex-col w-full">
-                        <label htmlFor="usuario">Usuário</label>
-                        <input
-                            type="text"
-                            id="usuario"
-                            name="usuario"
-                            placeholder="Usuario"
-                            className="p-2 border-2 rounded border-slate-700"
-                            value={usuarioLogin.usuario}
-                            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                                atualizarEstado(e)
-                            }
-                        />
-                    </div>
-                    <div className="flex flex-col w-full">
-                        <label htmlFor="senha">Senha</label>
-                        <input
-                            type="password"
-                            id="senha"
-                            name="senha"
-                            placeholder="Senha"
-                            className="p-2 border-2 rounded border-slate-700"
-                            value={usuarioLogin.senha}
-                            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                                atualizarEstado(e)
-                            }
-                        />
-                    </div>
-                    <button
-                        type="submit"
-                        className="flex justify-center w-1/2 py-2 text-white bg-indigo-400 rounded hover:bg-indigo-900"
-                    >
-                        {isLoading ? (
-                            <RotatingLines
-                                strokeColor="white"
-                                strokeWidth="5"
-                                animationDuration="0.75"
-                                width="24"
-                                visible={true}
-                            />
-                        ) : (
-                            <span>Entrar</span>
-                        )}
-                    </button>
+  function login(e: ChangeEvent<HTMLFormElement>) {
+    e.preventDefault();
+    handleLogin(usuarioLogin);
+  }
 
-                    <hr className="w-full border-slate-800" />
+  return (
+    <>
+      <div className="grid h-screen grid-cols-1 font-bold lg:grid-cols-2 place-items-center ">
+        <form
+          className="flex flex-col items-center justify-center w-1/2 gap-4"
+          onSubmit={login}
+        >
+          <h2 className="text-5xl text-slate-900 ">Entrar</h2>
+          <div className="flex flex-col w-full">
+            <label htmlFor="usuario">Usuário</label>
+            <input
+              type="text"
+              id="usuario"
+              name="usuario"
+              placeholder="Usuario"
+              className="p-2 border-2 rounded border-slate-700"
+              value={usuarioLogin.usuario}
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                atualizarEstado(e)
+              }
+            />
+          </div>
+          <div className="flex flex-col w-full">
+            <label htmlFor="senha">Senha</label>
+            <input
+              type="password"
+              id="senha"
+              name="senha"
+              placeholder="Senha"
+              className="p-2 border-2 rounded border-slate-700"
+              value={usuarioLogin.senha}
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                atualizarEstado(e)
+              }
+            />
+          </div>
+          <button
+            type="submit"
+            className="flex justify-center w-1/2 py-2 text-white bg-indigo-400 rounded hover:bg-indigo-900"
+          >
+            {isLoading ? (
+              <RotatingLines
+                strokeColor="white"
+                strokeWidth="5"
+                animationDuration="0.75"
+                width="24"
+                visible={true}
+              />
+            ) : (
+              <span>Entrar</span>
+            )}
+          </button>
 
-                    <p>
-                        Ainda não tem uma conta?{' '}
-                        <Link
-                            to="/cadastro"
-                            className="text-indigo-800 hover:underline"
-                        >
-                            Cadastre-se
-                        </Link>
-                    </p>
-                </form>
-                <div className="hidden fundoLogin lg:block"></div>
-            </div>
-        </>
-    );
+          <hr className="w-full border-slate-800" />
+
+          <p>
+            Ainda não tem uma conta?{' '}
+            <Link to="/cadastro" className="text-indigo-800 hover:underline">
+              Cadastre-se
+            </Link>
+          </p>
+        </form>
+        <div className="hidden fundoLogin lg:block"></div>
+      </div>
+    </>
+  );
 }
 
 export default Login;
