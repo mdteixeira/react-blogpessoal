@@ -28,7 +28,7 @@ function Navbar() {
             </Link>
             <Link to={'/'} className="hover:underline">Postagens</Link>
             <Link to={'/temas'} className="hover:underline">Temas</Link>
-            <Link to={'/'} className="hover:underline">Cadastrar tema</Link>
+            <Link to={'/cadastroTema'} className="hover:underline">Cadastrar tema</Link>
             <Link to={'/'} className="hover:underline">Perfil</Link>
             <Link to="/" onClick={logout} className="hover:underline">Sair</Link>
           </div>
