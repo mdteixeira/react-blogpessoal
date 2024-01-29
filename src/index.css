@@ -1,3 +1,36 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+input {
+  @apply focus:outline-none focus:ring-2 focus:ring-slate-200;
+}
+
+select {
+  @apply focus:outline-none;
+}
+
+.input-group input {
+  @apply focus:outline-none focus:ring-0;
+}
+
+textarea {
+  @apply focus-visible:outline-none;
+}
+.user {
+  @apply hover:ring-2 hover:ring-primary-100 hover:ring-opacity-25 transition-all rounded-full;
+}
+
+/*Change text in autofill textbox*/
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px rgb(255, 255, 255) inset !important;
+  border-radius: 1.25rem;
+}
+
+input {
+  line-break: auto;
+}

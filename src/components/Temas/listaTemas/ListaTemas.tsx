@@ -40,12 +40,12 @@ function ListaTemas() {
   return (
     <>
       {temas.length === 0 && (
-        <div className="flex items-center justify-center w-full h-full">
+        <div className="flex items-center justify-center w-full h-screen">
           <TailSpin
             visible={true}
             height="80"
             width="80"
-            color="#006ac0"
+            color="#FF0000"
             ariaLabel="tail-spin-loading"
             radius="1"
             wrapperStyle={{}}

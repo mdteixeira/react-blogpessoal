@@ -8,17 +8,15 @@ import {
 function Footer() {
   return (
     <>
-      <div className="flex justify-center text-white bg-indigo-900">
+      <div className="flex justify-center text-white bg-primary-600">
         <div className="container flex flex-col items-center py-4">
-          <p className="text-xl font-bold">
-            Blog pessoal Generation | Copyright:{' '}
-          </p>
+          <p className="text-xl font-bold">Blog pessoal Generation | Copyright: </p>
           <p className="text-lg">Acesse nossas redes sociais</p>
-          <div className="flex gap-2">
-            <LinkedinLogo size={48} weight="bold" />
-            <InstagramLogo size={48} weight="bold" />
-            <FacebookLogo size={48} weight="bold" />
-            <GithubLogo size={48} weight="bold" />
+          <div className="flex gap-4">
+            <LinkedinLogo className="hover:brightness-75" size={48} weight="light" />
+            <InstagramLogo className="hover:brightness-75" size={48} weight="light" />
+            <FacebookLogo className="hover:brightness-75" size={48} weight="light" />
+            <GithubLogo className="hover:brightness-75" size={48} weight="light" />
           </div>
         </div>
       </div>

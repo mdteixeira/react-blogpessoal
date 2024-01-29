@@ -10,9 +10,7 @@ function Login() {
 
   const { usuario, handleLogin, isLoading } = useContext(AuthContext);
 
-  const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>(
-    {} as UsuarioLogin
-  );
+  const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>({} as UsuarioLogin);
 
   useEffect(() => {
     if (usuario.token !== '') {
@@ -36,7 +34,7 @@ function Login() {
     <>
       <div className="grid h-screen grid-cols-1 font-bold lg:grid-cols-2 place-items-center ">
         <form
-          className="flex flex-col items-center justify-center w-1/2 gap-4"
+          className="flex flex-col items-center justify-center w-3/5 gap-4 border p-12 rounded-3xl"
           onSubmit={login}
         >
           <h2 className="text-5xl text-slate-900 ">Entrar</h2>
@@ -47,11 +45,9 @@ function Login() {
               id="usuario"
               name="usuario"
               placeholder="Usuario"
-              className="p-2 border-2 rounded border-slate-700"
+              className="p-3 border-2 rounded-2xl"
               value={usuarioLogin.usuario}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                atualizarEstado(e)
-              }
+              onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
             />
           </div>
           <div className="flex flex-col w-full">
@@ -61,16 +57,14 @@ function Login() {
               id="senha"
               name="senha"
               placeholder="Senha"
-              className="p-2 border-2 rounded border-slate-700"
+              className="p-3 border-2 rounded-2xl"
               value={usuarioLogin.senha}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                atualizarEstado(e)
-              }
+              onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
             />
           </div>
           <button
             type="submit"
-            className="flex justify-center w-1/2 py-2 text-white bg-indigo-400 rounded hover:bg-indigo-900"
+            className="flex justify-center w-1/2 py-3 mt-5 text-white bg-primary-400 rounded-2xl hover:bg-primary-600"
           >
             {isLoading ? (
               <RotatingLines
@@ -85,11 +79,11 @@ function Login() {
             )}
           </button>
 
-          <hr className="w-full border-slate-800" />
+          <hr className="w-full my-5 border-slate-200" />
 
           <p>
             Ainda não tem uma conta?{' '}
-            <Link to="/cadastro" className="text-indigo-800 hover:underline">
+            <Link to="/cadastro" className="text-indigo-700 hover:underline">
               Cadastre-se
             </Link>
           </p>

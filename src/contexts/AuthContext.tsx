@@ -33,6 +33,8 @@ export function AuthProvider({ children }: AuthProvidersProps) {
     try {
       await login(`/usuarios/logar`, userLogin, setUsuario);
       alert('Usuário foi autenticado com sucesso!');
+      localStorage.setItem('token', usuario.token);
+
       setIsLoading(false);
     } catch (error) {
       console.log(error);
@@ -50,12 +52,11 @@ export function AuthProvider({ children }: AuthProvidersProps) {
       foto: '',
       token: '',
     });
+    localStorage.setItem('token', '');
   }
 
   return (
-    <AuthContext.Provider
-      value={{ usuario, handleLogin, handleLogout, isLoading }}
-    >
+    <AuthContext.Provider value={{ usuario, handleLogin, handleLogout, isLoading }}>
       {children}
     </AuthContext.Provider>
   );

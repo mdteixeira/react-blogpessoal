@@ -80,11 +80,9 @@ function Cadastro() {
               id="nome"
               name="nome"
               placeholder="Nome"
-              className="p-2 border-2 rounded border-slate-700"
+              className="p-3 border-2 rounded-2xl "
               value={usuario.nome}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                atualizarEstado(e)
-              }
+              onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
             />
           </div>
           <div className="flex flex-col w-full">
@@ -94,11 +92,9 @@ function Cadastro() {
               id="usuario"
               name="usuario"
               placeholder="Usuario"
-              className="p-2 border-2 rounded border-slate-700"
+              className="p-3 border-2 rounded-2xl "
               value={usuario.usuario}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                atualizarEstado(e)
-              }
+              onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
             />
           </div>
           <div className="flex flex-col w-full">
@@ -108,11 +104,9 @@ function Cadastro() {
               id="foto"
               name="foto"
               placeholder="Foto"
-              className="p-2 border-2 rounded border-slate-700"
+              className="p-3 border-2 rounded-2xl "
               value={usuario.foto}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                atualizarEstado(e)
-              }
+              onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
             />
           </div>
           <div className="flex flex-col w-full">
@@ -122,11 +116,9 @@ function Cadastro() {
               id="senha"
               name="senha"
               placeholder="Senha"
-              className="p-2 border-2 rounded border-slate-700"
+              className="p-3 border-2 rounded-2xl "
               value={usuario.senha}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                atualizarEstado(e)
-              }
+              onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
             />
           </div>
           <div className="flex flex-col w-full">
@@ -136,23 +128,21 @@ function Cadastro() {
               id="confirmarSenha"
               name="confirmarSenha"
               placeholder="Confirmar Senha"
-              className="p-2 border-2 rounded border-slate-700"
+              className="p-3 border-2 rounded-2xl "
               value={confirmaSenha}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                handleConfirmarSenha(e)
-              }
+              onChange={(e: ChangeEvent<HTMLInputElement>) => handleConfirmarSenha(e)}
             />
           </div>
           <div className="flex justify-around w-full gap-8">
             <button
-              className="w-1/2 py-2 text-white bg-red-400 rounded hover:bg-red-700"
+              className="w-1/2 py-3 text-white bg-red-400 rounded-2xl hover:bg-red-600"
               onClick={retornar}
             >
               Cancelar
             </button>
             <button
               type="submit"
-              className="flex justify-center w-1/2 py-2 text-white bg-indigo-400 rounded hover:bg-indigo-900"
+              className="flex justify-center w-1/2 py-3 text-white bg-primary-400 rounded-2xl hover:bg-primary-500"
             >
               {isLoading ? (
                 <RotatingLines
