@@ -39,7 +39,11 @@ function Navbar() {
             <div className="user relative">
               <Popup
                 trigger={
-                  <img src={usuario?.foto} className="h-10 w-10 rounded-full" alt="" />
+                  <img
+                    src={usuario?.foto}
+                    className="h-10 w-10 rounded-full object-cover"
+                    alt=""
+                  />
                 }
                 position="bottom right"
                 closeOnDocumentClick
@@ -52,8 +56,7 @@ function Navbar() {
                   }
                 >
                   <Link
-                    to=""
-                    onClick={logout}
+                    to="/perfil"
                     className="hover:underline flex gap-3 items-center justify-between"
                   >
                     Perfil

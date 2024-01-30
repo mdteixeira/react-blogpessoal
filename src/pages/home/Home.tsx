@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 import { useContext, useEffect } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
+import { toastAlerta } from '../../utils/toastAlerta';
 
 function Home() {
   useEffect(() => {

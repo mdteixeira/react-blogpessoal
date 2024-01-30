@@ -1,5 +1,7 @@
 import { toast } from 'react-toastify';
 
+import 'react-toastify/dist/ReactToastify.css';
+
 export function toastAlerta(mensagem: string, tipo: string) {
   switch (tipo) {
     case 'sucesso':
@@ -10,7 +12,7 @@ export function toastAlerta(mensagem: string, tipo: string) {
         closeOnClick: true,
         pauseOnHover: false,
         draggable: false,
-        theme: 'colored',
+        theme: 'light',
         progress: undefined,
       });
       break;
@@ -23,7 +25,7 @@ export function toastAlerta(mensagem: string, tipo: string) {
         closeOnClick: true,
         pauseOnHover: false,
         draggable: false,
-        theme: 'colored',
+        theme: 'light',
         progress: undefined,
       });
       break;
@@ -36,7 +38,7 @@ export function toastAlerta(mensagem: string, tipo: string) {
         closeOnClick: true,
         pauseOnHover: false,
         draggable: false,
-        theme: 'colored',
+        theme: 'light',
         progress: undefined,
       });
       break;
@@ -49,7 +51,7 @@ export function toastAlerta(mensagem: string, tipo: string) {
         closeOnClick: true,
         pauseOnHover: false,
         draggable: false,
-        theme: 'colored',
+        theme: 'light',
         progress: undefined,
       });
       break;
