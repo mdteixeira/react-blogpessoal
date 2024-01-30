@@ -1,7 +1,9 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
 import { SignOut, User } from 'phosphor-react';
+import Popup from 'reactjs-popup';
+import { toastAlerta } from '../../utils/toastAlerta';
 
 function Navbar() {
   let navigate = useNavigate();
@@ -10,13 +12,11 @@ function Navbar() {
 
   function logout() {
     handleLogout();
-    alert('Usuário deslogado com sucesso');
+    toastAlerta('Usuário deslogado com sucesso', 'info');
     navigate('/login');
   }
 
   let navbarComponent;
-
-  const [Show, setShow] = useState(false);
 
   if (usuario.token !== '') {
     navbarComponent = (
@@ -37,41 +37,43 @@ function Navbar() {
               Cadastrar tema
             </Link>
             <div className="user relative">
-              <img
-                src={usuario?.foto}
-                className="h-10 w-10 rounded-full"
-                alt=""
-                onClick={() => setShow(!Show)}
-              />
-              <div
-                className={
-                  Show
-                    ? 'flex flex-col gap-2 border-2 bg-white border-primary-500 absolute text-slate-900 p-5 rounded-2xl right-0 mt-2 z-[60] w-64'
-                    : 'hidden'
+              <Popup
+                trigger={
+                  <img src={usuario?.foto} className="h-10 w-10 rounded-full" alt="" />
                 }
+                position="bottom right"
+                closeOnDocumentClick
+                contentStyle={{ padding: '0px', border: 'none' }}
+                arrow={false}
               >
-                <Link
-                  to=""
-                  onClick={logout}
-                  className="hover:underline flex gap-3 items-center justify-between"
+                <div
+                  className={
+                    'flex flex-col gap-2 border-2 bg-white border-primary-500 absolute text-slate-900 p-5 rounded-2xl right-0 mt-2 z-[60] w-64'
+                  }
                 >
-                  Perfil
-                  <span>
-                    <User size={16} className="text-primary-700" weight="bold" />
-                  </span>
-                </Link>
-                <hr />
-                <Link
-                  to=""
-                  onClick={logout}
-                  className="hover:underline flex gap-3 items-center justify-between"
-                >
-                  Sair
-                  <span>
-                    <SignOut size={16} className="text-primary-700" weight="bold" />
-                  </span>
-                </Link>
-              </div>
+                  <Link
+                    to=""
+                    onClick={logout}
+                    className="hover:underline flex gap-3 items-center justify-between"
+                  >
+                    Perfil
+                    <span>
+                      <User size={16} className="text-primary-700" weight="bold" />
+                    </span>
+                  </Link>
+                  <hr />
+                  <Link
+                    to=""
+                    onClick={logout}
+                    className="hover:underline flex gap-3 items-center justify-between"
+                  >
+                    Sair
+                    <span>
+                      <SignOut size={16} className="text-primary-700" weight="bold" />
+                    </span>
+                  </Link>
+                </div>
+              </Popup>
             </div>
           </div>
         </div>

@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import Postagem from '../../../models/Postagem';
 import { DotsThree, PencilSimple, TrashSimple } from 'phosphor-react';
-import { useContext, useState } from 'react';
-import { AuthContext } from '../../../contexts/AuthContext';
+import { useState } from 'react';
+import Popup from 'reactjs-popup';
 
 interface CardPostagemProps {
   post: Postagem;
@@ -10,7 +10,6 @@ interface CardPostagemProps {
 
 function CardPostagem({ post }: CardPostagemProps) {
   const [Show, setShow] = useState(false);
-  const { usuario } = useContext(AuthContext);
 
   return (
     <div className="border flex flex-col rounded-3xl overflow-hidden justify-between relative">
@@ -48,30 +47,37 @@ function CardPostagem({ post }: CardPostagemProps) {
           </div>
         </div>
       </div>
-      <div
-        className={
-          Show && post.usuario?.id == usuario.id
-            ? 'flex absolute right-0 p-2 rounded-3xl pr-12'
-            : 'hidden'
+      <Popup
+        trigger={
+          <DotsThree
+            size={32}
+            className="absolute right-0 top-0 m-2 bg-neutral-200 bg-opacity-0 hover:bg-opacity-100 rounded-full z-10"
+          />
         }
+        position="left top"
+        closeOnDocumentClick
+        contentStyle={{ padding: '0px', border: 'none' }}
+        arrow={false}
       >
-        <Link
-          to={`/editarPostagem/${post.id}`}
-          className="w-full text-white bg-primary-400 hover:bg-primary-500 flex items-center justify-center px-2 rounded-s-full"
-        >
-          <button>
-            <PencilSimple size={32} weight="bold" className="p-2" />
-          </button>
-        </Link>
-        <Link
-          to={`/deletarPostagem/${post.id}`}
-          className="text-white bg-red-500 hover:bg-red-600 w-full flex items-center justify-center px-2 rounded-e-full"
-        >
-          <button>
-            <TrashSimple size={32} weight="bold" className="p-2" />
-          </button>
-        </Link>
-      </div>
+        <div className={'flex absolute right-0 pr-2 rounded-3xl'}>
+          <Link
+            to={`/editarPostagem/${post.id}`}
+            className="w-full text-white bg-primary-400 hover:bg-primary-500 flex items-center justify-center px-2 rounded-s-full"
+          >
+            <button>
+              <PencilSimple size={32} weight="bold" className="p-2" />
+            </button>
+          </Link>
+          <Link
+            to={`/deletarPostagem/${post.id}`}
+            className="text-white bg-red-500 hover:bg-red-600 w-full flex items-center justify-center px-2 rounded-e-full"
+          >
+            <button>
+              <TrashSimple size={32} weight="bold" className="p-2" />
+            </button>
+          </Link>
+        </div>
+      </Popup>
     </div>
   );
 }
