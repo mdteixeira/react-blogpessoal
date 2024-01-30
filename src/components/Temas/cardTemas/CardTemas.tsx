@@ -13,7 +13,7 @@ function CardTemas({ tema }: CardTemaProps) {
     <div className="flex flex-col justify-between overflow-hidden border rounded-3xl relative">
       <DotsThree
         size={32}
-        className="absolute right-0 top-0 m-2 bg-primary-200 bg-opacity-50 hover:bg-opacity-100 rounded-full z-10"
+        className="absolute right-0 top-0 m-2 bg-primary-200 bg-opacity-0 hover:bg-opacity-100 rounded-full z-10"
         onClick={() => setShow(!Show)}
       />
       <p className="h-full p-4 px-8 text-3xl -bold">{tema.descricao}</p>

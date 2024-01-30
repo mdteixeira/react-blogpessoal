@@ -16,6 +16,10 @@ export const cadastrarUsuario = async (
 export const login = async (url: string, dados: Object, setDados: Function) => {
   const resposta = await api.post(url, dados);
   setDados(resposta.data);
+
+  localStorage.setItem('usuario', JSON.stringify(resposta.data));
+  localStorage.setItem('token', JSON.stringify(resposta.data.token));
+  console.log(localStorage.getItem('usuario'));
 };
 
 export const buscar = async (url: string, setDados: Function, header: object) => {

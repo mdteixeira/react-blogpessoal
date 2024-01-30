@@ -55,7 +55,7 @@ function FormularioPostagem() {
 
   useEffect(() => {
     if (token === '') {
-      alert('Você precisa estar logado');
+      console.log('Você precisa estar logado');
       navigate('/');
     }
   }, [token]);

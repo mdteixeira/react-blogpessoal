@@ -16,7 +16,7 @@ function CardPostagem({ post }: CardPostagemProps) {
     <div className="border flex flex-col rounded-3xl overflow-hidden justify-between relative">
       <DotsThree
         size={32}
-        className="absolute right-0 top-0 m-2 bg-neutral-200 bg-opacity-50 hover:bg-opacity-100 rounded-full z-10"
+        className="absolute right-0 top-0 m-2 bg-neutral-200 bg-opacity-0 hover:bg-opacity-100 rounded-full z-10"
         onClick={() => setShow(!Show)}
       />
       <div className="h-full flex flex-col justify-between">

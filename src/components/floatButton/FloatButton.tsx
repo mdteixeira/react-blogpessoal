@@ -1,14 +1,12 @@
 import { Plus } from 'phosphor-react';
 import ModalPostagem from '../postagens/modalPostagem/ModalPostagem';
-import { useContext } from 'react';
-import { AuthContext } from '../../contexts/AuthContext';
 
 function FloatButton() {
-  const { usuario } = useContext(AuthContext);
-
   let floatButton;
 
-  if (usuario.token !== '') {
+  var token = localStorage.getItem('token');
+
+  if (token !== '') {
     floatButton = (
       <div className="fixed bottom-0 right-0 m-5 z-50 bg-primary-400 rounded-full size-16 overflow-hidden flex">
         <div className="opacity-0 flex z-50">{<ModalPostagem />}</div>

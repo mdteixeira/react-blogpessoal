@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useState } from 'react';
+import { ReactNode, createContext, useEffect, useState } from 'react';
 import UsuarioLogin from '../models/UsuarioLogin';
 import { login } from '../services/Service';
 
@@ -25,6 +25,12 @@ export function AuthProvider({ children }: AuthProvidersProps) {
     token: '',
   });
 
+  useEffect(() => {
+    if (localStorage.getItem('usuario')) {
+      setUsuario(JSON.parse(localStorage.getItem('usuario') ?? ''));
+    }
+  }, []);
+
   const [isLoading, setIsLoading] = useState(false);
 
   async function handleLogin(userLogin: UsuarioLogin) {
@@ -33,8 +39,6 @@ export function AuthProvider({ children }: AuthProvidersProps) {
     try {
       await login(`/usuarios/logar`, userLogin, setUsuario);
       alert('Usuário foi autenticado com sucesso!');
-      localStorage.setItem('token', usuario.token);
-
       setIsLoading(false);
     } catch (error) {
       console.log(error);
@@ -52,6 +56,7 @@ export function AuthProvider({ children }: AuthProvidersProps) {
       foto: '',
       token: '',
     });
+    localStorage.setItem('usuario', '');
     localStorage.setItem('token', '');
   }
 
