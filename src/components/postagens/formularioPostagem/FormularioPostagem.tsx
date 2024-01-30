@@ -1,5 +1,5 @@
 import { ChangeEvent, useContext, useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { redirect, useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthContext';
 import Postagem from '../../../models/Postagem';
 import Tema from '../../../models/Tema';
@@ -76,7 +76,7 @@ function FormularioPostagem() {
     });
   }, [tema]);
 
-  function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
+  function atualizarEstado(e: ChangeEvent<HTMLTextAreaElement>) {
     setPostagem({
       ...postagem,
       [e.target.name]: e.target.value,
@@ -133,7 +133,12 @@ function FormularioPostagem() {
     }
   }
 
-  const carregandoTema = tema.descricao === '';
+  var aguardando =
+    tema.descricao === '' ||
+    postagem.titulo.length < 5 ||
+    postagem.titulo.length > 80 ||
+    postagem.texto.length < 10 ||
+    postagem.texto.length > 100;
 
   return (
     <div className="container flex flex-col mx-auto items-center mb-8">
@@ -142,43 +147,44 @@ function FormularioPostagem() {
       </h1>
 
       <form onSubmit={gerarNovaPostagem} className="flex flex-col w-1/2">
-        <div className="input-group border rounded-3xl pl-5 pr-2 py-1">
+        <div className="TextArea-group border rounded-3xl pl-5 pr-2 py-1">
           <div className="flex flex-col gap-2 relative">
-            <input
+            <textarea
               value={postagem.titulo}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
-              type="text"
+              onChange={(e: ChangeEvent<HTMLTextAreaElement>) => atualizarEstado(e)}
               placeholder="Titulo"
               name="titulo"
               required
-              className="p-2 text-2xl font-bold"
-              multiple
+              className="p-2 resize-none h-24 overflow-hidden text-xl font-bold"
             />
             <span
               className={
-                postagem.titulo.length < 5 || postagem.titulo.length > 100
-                  ? 'absolute text-xs top-1 right-1 px-1 bg-slate-200 bg-opacity-50 rounded-2xl text-red-500'
-                  : 'absolute text-xs top-1 right-1 px-1 bg-slate-200 bg-opacity-50 rounded-2xl'
+                postagem.titulo.length < 5 || postagem.titulo.length > 80
+                  ? 'transition-all delay-150 p-2 absolute text-xs top-1 right-0 bg-opacity-50 rounded-2xl text-red-500 bg-red-300'
+                  : postagem.titulo.length > 23
+                  ? 'transition-all delay-150 p-2 absolute text-xs top-1 right-[-4.5rem] bg-slate-200 bg-opacity-50 rounded-2xl'
+                  : 'transition-all delay-150 p-2 absolute text-xs top-1 right-0 bg-slate-200 bg-opacity-50 rounded-2xl'
               }
             >
-              {postagem.titulo.length}/100
+              {postagem.titulo.length}/80
             </span>
           </div>
           <div className="flex flex-col gap-2 mt-2 relative">
-            <input
+            <textarea
               value={postagem.texto}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
-              type="text"
+              onChange={(e: ChangeEvent<HTMLTextAreaElement>) => atualizarEstado(e)}
               placeholder="Texto"
               name="texto"
               required
-              className="p-2"
+              className="p-2 resize-none h-24 overflow-hidden"
             />
             <span
               className={
                 postagem.texto.length < 10 || postagem.texto.length > 100
-                  ? 'absolute text-xs top-1 right-1 px-1 bg-slate-200 bg-opacity-50 rounded-2xl text-red-500'
-                  : 'absolute text-xs top-1 right-1 px-1 bg-slate-200 bg-opacity-50 rounded-2xl'
+                  ? 'transition-all delay-150 p-2 absolute text-xs top-1 right-0 bg-opacity-50 rounded-2xl text-red-500 bg-red-300'
+                  : postagem.texto.length > 35
+                  ? 'transition-all delay-150 p-2 absolute text-xs top-1 right-[-4.5rem] bg-slate-200 bg-opacity-50 rounded-2xl'
+                  : 'transition-all delay-150 p-2 absolute text-xs top-1 right-0 bg-slate-200 bg-opacity-50 rounded-2xl'
               }
             >
               {postagem.texto.length}/100
@@ -203,15 +209,14 @@ function FormularioPostagem() {
           </select>
         </div>
         <button
-          disabled={carregandoTema}
+          disabled={aguardando}
           type="submit"
+          onClick={() => {
+            redirect(`/home`);
+          }}
           className="rounded-xl disabled:opacity-50 bg-primary-400 hover:bg-primary-600 text-white font-bold w-1/2 mx-auto block py-3 mt-5"
         >
-          {carregandoTema ||
-          postagem.titulo.length <= 5 ||
-          postagem.titulo.length >= 100 ||
-          postagem.texto.length <= 10 ||
-          postagem.texto.length >= 100 ? (
+          {aguardando ? (
             <span>Aguardando</span>
           ) : id !== undefined ? (
             'Editar'
