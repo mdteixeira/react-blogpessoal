@@ -146,10 +146,7 @@ function FormularioPostagem() {
         {id !== undefined ? 'Editar Postagem' : 'Criar Postagem'}
       </h1>
 
-      <form
-        onSubmit={gerarNovaPostagem}
-        className="flex flex-col md:w-2/3 lg:w-1/2 w-11/12"
-      >
+      <form onSubmit={gerarNovaPostagem} className="flex flex-col w-11/12">
         <div className="TextArea-group border rounded-3xl pl-5 pr-2 py-1">
           <div className="flex flex-col gap-2 relative">
             <textarea
