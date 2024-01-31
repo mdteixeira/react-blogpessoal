@@ -7,6 +7,10 @@ import CardPostagem from '../cardPostagens/CardPostagem';
 import { toastAlerta } from '../../../utils/toastAlerta';
 
 function ListaPostagens() {
+  useEffect(() => {
+    document.title = 'ZetaBlog - Postagens';
+  }, []);
+
   const [postagens, setPostagens] = useState<Postagem[]>([]);
 
   let navigate = useNavigate();

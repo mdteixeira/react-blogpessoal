@@ -22,8 +22,9 @@ function Navbar() {
     navbarComponent = (
       <div className="w-full bg-primary-600 text-white flex justify-center py-2">
         <div className="container flex justify-between text-lg items-center">
-          <Link to="/home" className="text-2xl font-bold uppercase">
-            Blog Pessoal
+          <Link to="/home" className="text-2xl font-bold flex items-center">
+            <img src="Logo.png" className="h-12" alt="" />
+            <h1>ZetaBlog</h1>
           </Link>
 
           <div className="flex gap-4 items-center">

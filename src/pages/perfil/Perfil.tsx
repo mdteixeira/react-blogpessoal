@@ -9,6 +9,10 @@ import Popup from 'reactjs-popup';
 function Perfil() {
   let navigate = useNavigate();
 
+  useEffect(() => {
+    document.title = 'ZetaBlog - Seu Perfil';
+  }, []);
+
   const { usuario } = useContext(AuthContext);
 
   useEffect(() => {

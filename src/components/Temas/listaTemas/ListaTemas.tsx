@@ -8,6 +8,10 @@ import CardTemas from '../cardTemas/CardTemas';
 import { toastAlerta } from '../../../utils/toastAlerta';
 
 function ListaTemas() {
+  useEffect(() => {
+    document.title = 'ZetaBlog - Temas';
+  }, []);
+
   const [temas, setTemas] = useState<Tema[]>([]);
 
   let navigate = useNavigate();

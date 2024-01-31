@@ -10,7 +10,7 @@ import { toastAlerta } from '../../utils/toastAlerta';
 
 function Home() {
   useEffect(() => {
-    document.title = 'Blog Pessoal - Início';
+    document.title = 'ZetaBlog - Início';
   }, []);
 
   const { usuario } = useContext(AuthContext);

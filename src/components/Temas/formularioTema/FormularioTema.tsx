@@ -8,6 +8,13 @@ import { toastAlerta } from '../../../utils/toastAlerta';
 function FormularioTema() {
   const [tema, setTema] = useState<Tema>({} as Tema);
 
+  useEffect(() => {
+    if (id !== undefined) {
+      document.title = 'ZetaBlog - Editar tema';
+    }
+    document.title = 'ZetaBlog - Criar tema';
+  }, []);
+
   let navigate = useNavigate();
 
   const { id } = useParams<{ id: string }>();
