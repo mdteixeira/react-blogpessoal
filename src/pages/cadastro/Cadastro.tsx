@@ -76,14 +76,14 @@ function Cadastro() {
     <>
       <div className="grid h-screen grid-cols-1 font-bold lg:grid-cols-2 place-items-center">
         <div className="hidden fundoCadastro lg:block"></div>
-        <div className="flex justify-center items-center  flex-col gap-8 mx-auto">
+        <div className="flex justify-center items-center flex-col w-full gap-8 mx-auto">
           <div className="text-2xl font-bold flex items-center">
             <img src="Logo.png" className="h-16" alt="" />
             <h1 className="text-3xl">ZetaBlog</h1>
           </div>
           <hr className="border-primary-300 w-full" />
           <form
-            className="flex flex-col items-center justify-center md:w-3/5 gap-4 md:border md:p-12 rounded-3xl"
+            className="w-11/12 md:w-3/5  flex flex-col items-center justify-center gap-4 rounded-3xl"
             onSubmit={cadastrarNovoUsuario}
           >
             <h2 className="text-5xl text-slate-900 mb-8">Cadastrar</h2>

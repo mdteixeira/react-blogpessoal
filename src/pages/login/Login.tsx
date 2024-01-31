@@ -44,7 +44,7 @@ function Login() {
           </div>
           <hr className="border-primary-300 w-3/4" />
           <form
-            className="flex flex-col items-center justify-center w-3/5 gap-4 md:border md:p-12 rounded-3xl"
+            className="flex flex-col items-center justify-center w-11/12 md:w-3/5 gap-4 rounded-3xl"
             onSubmit={login}
           >
             <hr className="border-primary-300" />
@@ -94,7 +94,7 @@ function Login() {
 
             <p className="text-center">
               Ainda não tem uma conta?{' '}
-              <Link to="/cadastro" className="text-indigo-700 hover:underline">
+              <Link to="/cadastro" className="text-indigo-700 hover:underline text-nowrap">
                 Cadastre-se
               </Link>
             </p>
