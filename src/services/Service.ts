@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://blogpessoal-te9z.onrender.com/',
+  baseURL: import.meta.env.VITE_API_URL,
 });
 
 export const cadastrarUsuario = async (
@@ -33,6 +33,9 @@ export const cadastrar = async (
   setDados: Function,
   header: object
 ) => {
+  console.log(url);
+  console.log(dados);
+  console.log(setDados);
   const resposta = await api.post(url, dados, header);
   setDados(resposta.data);
 };
