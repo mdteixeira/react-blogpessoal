@@ -142,11 +142,14 @@ function FormularioPostagem() {
 
   return (
     <div className="container flex flex-col mx-auto items-center mb-8">
-      <h1 className="text-4xl text-center my-8">
+      <h1 className="text-4xl text-center my-8 mx-8">
         {id !== undefined ? 'Editar Postagem' : 'Criar Postagem'}
       </h1>
 
-      <form onSubmit={gerarNovaPostagem} className="flex flex-col w-1/2">
+      <form
+        onSubmit={gerarNovaPostagem}
+        className="flex flex-col md:w-2/3 lg:w-1/2 w-11/12"
+      >
         <div className="TextArea-group border rounded-3xl pl-5 pr-2 py-1">
           <div className="flex flex-col gap-2 relative">
             <textarea
@@ -155,14 +158,14 @@ function FormularioPostagem() {
               placeholder="Titulo"
               name="titulo"
               required
-              className="p-2 resize-none h-24 overflow-hidden text-xl font-bold"
+              className="p-2 resize-none h-36 md:h-24 overflow-hidden text-xl font-bold"
             />
             <span
               className={
                 postagem.titulo.length < 5 || postagem.titulo.length > 80
                   ? 'transition-all delay-150 p-2 absolute text-xs top-1 right-0 bg-opacity-50 rounded-2xl text-red-500 bg-red-300'
                   : postagem.titulo.length > 23
-                  ? 'transition-all delay-150 p-2 absolute text-xs top-1 right-[-4.5rem] bg-slate-200 bg-opacity-50 rounded-2xl'
+                  ? 'transition-all delay-150 p-2 absolute text-xs top-1 right-0 md:right-[-4.5rem] bg-slate-200 bg-opacity-50 rounded-2xl'
                   : 'transition-all delay-150 p-2 absolute text-xs top-1 right-0 bg-slate-200 bg-opacity-50 rounded-2xl'
               }
             >
@@ -176,14 +179,14 @@ function FormularioPostagem() {
               placeholder="Texto"
               name="texto"
               required
-              className="p-2 resize-none h-24 overflow-hidden"
+              className="p-2 resize-none h-36 md:h-24 overflow-hidden"
             />
             <span
               className={
                 postagem.texto.length < 10 || postagem.texto.length > 100
                   ? 'transition-all delay-150 p-2 absolute text-xs top-1 right-0 bg-opacity-50 rounded-2xl text-red-500 bg-red-300'
                   : postagem.texto.length > 35
-                  ? 'transition-all delay-150 p-2 absolute text-xs top-1 right-[-4.5rem] bg-slate-200 bg-opacity-50 rounded-2xl'
+                  ? 'transition-all delay-150 p-2 absolute text-xs top-1 right-0 md:right-[-4.5rem] bg-slate-200 bg-opacity-50 rounded-2xl'
                   : 'transition-all delay-150 p-2 absolute text-xs top-1 right-0 bg-slate-200 bg-opacity-50 rounded-2xl'
               }
             >

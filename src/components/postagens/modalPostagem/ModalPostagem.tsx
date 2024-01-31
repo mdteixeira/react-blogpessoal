@@ -1,7 +1,7 @@
 import Popup from 'reactjs-popup';
-import './ModalPostagem.css';
 import FormularioPostagem from '../formularioPostagem/FormularioPostagem';
 import 'reactjs-popup/dist/index.css';
+import './ModalPostagem.css';
 
 function ModalPostagem() {
   return (
@@ -12,10 +12,9 @@ function ModalPostagem() {
         </button>
       }
       modal
+      className=""
     >
-      <div>
-        <FormularioPostagem />
-      </div>
+      <FormularioPostagem />
     </Popup>
   );
 }

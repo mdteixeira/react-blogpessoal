@@ -64,7 +64,7 @@ function DeletarPostagem() {
     retornar();
   }
   return (
-    <div className="container w-1/3 mx-auto">
+    <div className="container md:w-1/3 w-11/12 mx-auto">
       <h1 className="text-4xl text-center my-4">Deletar postagem</h1>
 
       <p className="text-center font-semibold mb-4">
@@ -78,13 +78,13 @@ function DeletarPostagem() {
         </div>
         <div className="flex">
           <button
-            className="text-slate-100 bg-primary-400 hover:bg-primary-600 w-full py-2"
+            className="text-slate-100 text-xs sm:text-base bg-primary-400 hover:bg-primary-600 w-full py-2"
             onClick={retornar}
           >
             Não, voltar
           </button>
           <button
-            className="w-full text-slate-100 flex items-center justify-center bg-red-400 hover:bg-red-600"
+            className="w-full text-xs sm:text-base text-slate-100 flex items-center justify-center bg-red-400 hover:bg-red-600"
             onClick={deletarPostagem}
           >
             Deletar Postagem

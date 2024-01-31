@@ -42,8 +42,9 @@ function Login() {
             <img src="Logo.png" className="h-16" alt="" />
             <h1 className="text-3xl">ZetaBlog</h1>
           </div>
+          <hr className="border-primary-300 w-3/4" />
           <form
-            className="flex flex-col items-center justify-center w-3/5 gap-4 border p-12 rounded-3xl"
+            className="flex flex-col items-center justify-center w-3/5 gap-4 md:border md:p-12 rounded-3xl"
             onSubmit={login}
           >
             <hr className="border-primary-300" />
@@ -91,7 +92,7 @@ function Login() {
 
             <hr className="w-full my-5 border-slate-200" />
 
-            <p>
+            <p className="text-center">
               Ainda não tem uma conta?{' '}
               <Link to="/cadastro" className="text-indigo-700 hover:underline">
                 Cadastre-se

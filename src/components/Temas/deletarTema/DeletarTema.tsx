@@ -63,7 +63,7 @@ function DeletarTema() {
     retornar();
   }
   return (
-    <div className="container w-1/3 mx-auto">
+    <div className="container md:w-1/3 w-11/12 mx-auto">
       <h1 className="my-4 text-4xl text-center">Deletar tema</h1>
 
       <p className="mb-4 font-semibold text-center">
@@ -74,13 +74,13 @@ function DeletarTema() {
         <p className="h-full p-8 text-3xl">{tema.descricao}</p>
         <div className="flex">
           <button
-            className="w-full py-2 bg-primary-200 hover:bg-primary-400"
+            className="w-full text-xs sm:text-base py-2 bg-primary-200 hover:bg-primary-400"
             onClick={retornar}
           >
             Não, voltar
           </button>
           <button
-            className="flex items-center justify-center w-full bg-red-400 text-slate-100 hover:bg-red-600"
+            className="flex items-center text-xs sm:text-base justify-center w-full bg-red-400 text-slate-100 hover:bg-red-600"
             onClick={deletarTema}
           >
             Deletar tema

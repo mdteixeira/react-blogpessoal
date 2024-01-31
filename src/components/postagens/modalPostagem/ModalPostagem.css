@@ -1,4 +1,5 @@
 .popup-content {
-    border-radius: 3rem;
-    padding-bottom: 2rem;
-  }
+  border-radius: 3rem;
+  padding-bottom: 2rem;
+  width: auto !important;
+}
