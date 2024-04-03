@@ -1,16 +1,17 @@
-import { Link, useNavigate } from 'react-router-dom';
+import * as reactRouterDom from 'react-router-dom';
 import './Login.css';
 import { AuthContext } from '../../contexts/AuthContext';
 import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import UsuarioLogin from '../../models/UsuarioLogin';
 import { RotatingLines } from 'react-loader-spinner';
+import InfoServer from '../../components/infoserver';
 
 function Login() {
   useEffect(() => {
     document.title = 'ZetaBlog - Login';
   }, []);
 
-  const navigate = useNavigate();
+  const navigate = reactRouterDom.useNavigate();
 
   const { usuario, handleLogin, isLoading } = useContext(AuthContext);
 
@@ -36,12 +37,13 @@ function Login() {
 
   return (
     <>
-      <div className="grid h-screen grid-cols-1 font-bold lg:grid-cols-2 place-items-center ">
-        <div className="flex justify-center items-center  flex-col gap-8 w-full mx-auto">
+      <div className="grid h-screen grid-cols-1 font-bold place-items-center ">
+        <div className="flex justify-center items-center  flex-col gap-8 w-full mx-auto lg:max-w-[1000px]">
           <div className="text-2xl font-bold flex items-center">
             <img src="Logo.png" className="h-16" alt="" />
             <h1 className="text-3xl">ZetaBlog</h1>
           </div>
+            <InfoServer />
           <hr className="border-primary-300 w-3/4" />
           <form
             className="flex flex-col items-center justify-center w-11/12 md:w-3/5 gap-4 rounded-3xl"
@@ -94,13 +96,15 @@ function Login() {
 
             <p className="text-center">
               Ainda não tem uma conta?{' '}
-              <Link to="/cadastro" className="text-indigo-700 hover:underline text-nowrap">
+              <reactRouterDom.Link
+                to="/cadastro"
+                className="text-indigo-700 hover:underline text-nowrap"
+              >
                 Cadastre-se
-              </Link>
+              </reactRouterDom.Link>
             </p>
           </form>
         </div>
-        <div className="hidden fundoLogin lg:block"></div>
       </div>
     </>
   );

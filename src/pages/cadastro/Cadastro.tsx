@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { cadastrarUsuario } from '../../services/Service';
 import { RotatingLines } from 'react-loader-spinner';
 import { toastAlerta } from '../../utils/toastAlerta';
+import InfoServer from '../../components/infoserver';
 
 function Cadastro() {
   useEffect(() => {
@@ -74,13 +75,13 @@ function Cadastro() {
 
   return (
     <>
-      <div className="grid h-screen grid-cols-1 font-bold lg:grid-cols-2 place-items-center">
-        <div className="hidden fundoCadastro lg:block"></div>
-        <div className="flex justify-center items-center flex-col w-full gap-8 mx-auto">
+      <div className="grid h-screen grid-cols-1 font-bold place-items-center ">
+        <div className="flex justify-center items-center  flex-col gap-8 w-full mx-auto lg:max-w-[1000px]">
           <div className="text-2xl font-bold flex items-center">
             <img src="Logo.png" className="h-16" alt="" />
             <h1 className="text-3xl">ZetaBlog</h1>
           </div>
+            <InfoServer />
           <hr className="border-primary-300 w-full" />
           <form
             className="w-11/12 md:w-3/5  flex flex-col items-center justify-center gap-4 rounded-3xl"
